@@ -1,0 +1,65 @@
+---
+"Checklist section": "General metadata"
+Attributes:
+  - name: "Unique identifier"
+    required: true
+  - name: "Title"
+    required: true
+  - name: "Description"
+    required: true
+  - name: "Submission date"
+"Source list":
+  - name: Default ISA-Tab configuration
+    ref: "http://example.com"
+"Recommended ontologies":
+ - abbr: OBI
+   name: "Ontology for Biomedical Investigation"
+   ref: "http://example.com"
+Comment: >
+  This is a comment to the whole record
+---
+"Checklist section": "Timing and location"
+Attributes:
+  - name: "Timing"
+    children:
+      - name: "Start of experiment"
+        required: true
+      - name: "Duration"
+        requried: true
+  - name: "Experiment location"
+      children:
+        - name: "Geographic location"
+          required: true
+        - name: "Latitude and longitude"
+"Source list":
+  - name: Default ISA-Tab configuration
+    ref: "http://example.com"
+"Recommended ontologies":
+ - abbr: OBI
+   name: "Ontology for Biomedical Investigation"
+   ref: "http://example.com"
+Comment: >
+  This is a comment to the whole record
+---
+"Checklist section": "Timing and location"
+Attributes:
+  - name: "Start of experiment"
+    category: "Timing"
+    required: true
+  - name: "Duration"
+    category: "Timing"
+    requried: true
+  - name: "Geographic location"
+    category: "Experiment location"
+    required: true
+  - name: "Latitude and longitude"
+    category: "Experiment location"
+"Source list":
+  - name: Default ISA-Tab configuration
+    ref: "http://example.com"
+"Recommended ontologies":
+ - abbr: OBI
+   name: "Ontology for Biomedical Investigation"
+   ref: "http://example.com"
+Comment: >
+  This is a comment to the whole record

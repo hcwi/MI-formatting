@@ -1,0 +1,295 @@
+---
+Checklist section: "General metadata"
+Attributes:
+  - name: Unique identifier
+    required: true
+  - name: Title
+    required: true
+  - name: Description
+    required: true
+  - name: Submission date
+  - name: Public release date
+  - name: Publications
+  - name: Laboratory address and contact details
+Source list:
+  - name: Default ISA-Tab configuration
+    desc: ISA-Tab reporting guideline
+    ref: http://www.biosharing.org/bsg-000078
+Recommended ontologies:
+  - name: Ontology for Biomedical Investigations
+    abbr: OBI
+    ref: http://obi-ontology.org
+  - name: Crop Research Ontology
+    abbr: CRO
+    ref: http://example.com
+Comment: >
+  This is a comment to the whole record
+---
+Checklist section: "Timing and location"
+Attributes:
+  - name: "Timing"
+    children:
+      - name: Start of experiment (date/hour)
+        required: true
+      - name: Duration (years/months/days/hours)
+        requried: true
+  - name: "Experiment location"
+    children:
+      - name: Geographic location
+        required: true
+      - name: Latitude and longitude
+      - name: Altitude
+      - name: Inclination and aspect
+      - name: Habitat
+Source list:
+  - name: Poorter et al.
+    desc:
+    ref: 4
+  - name: Morrison et al.
+    desc:
+    ref: 5
+  - name: "CIMR, Environmental Analysis Context"
+    desc:
+    ref: 6,7
+Recommended ontologies:
+  - name: Ontology for Biomedical Investigations
+    abbr: OBI
+    ref: http://obi-ontology.org
+  - name: Gazeeter
+    abbr: GAZ
+    ref: 9
+Comment: >
+  This is a comment to the whole record
+---
+Checklist section: "Biosource"
+Attributes:
+  - name: Organism (taxon)
+    required: true
+  - name: Infraspecific name
+    required: true
+  - name: Infraspecific rank
+  - name: Common name
+  - name: Genotype
+  - name: Organism age
+  - name: Life stage
+  - name: "Seed preparation"
+    children:
+      - name: Seed source
+        required: true
+      - name: Pretreatments
+      - name: Conservation conditions
+Source list:
+  - name: MIxS Plant-associated environmetal package
+    desc:
+    ref: 10
+  - name: Yilmaz et al.
+    desc:
+    ref: 11
+  - name: FAO/Bioversity Multi-Crop Passport Descriptors V.2 (MCPD V.2)
+    desc:
+    ref: 12
+Recommended ontologies:
+  - name: UNIPROT Taxonomy
+    abbr:
+    ref: 13
+  - name: NCBI Taxonomy
+    abbr:
+    ref: 14
+Comment: >
+  This is a comment to the whole record
+---
+Checklist section: "Environment"
+Attributes:
+  - name: Growth facility (growth chamber, GC / greenhouse, GH / open top chamber, OTC / experimental garden, EG / experimental field, EF)
+    required: true
+  - name: "Aerial conditions"
+    required: true
+    children:
+      - name: "CO2"
+        children:
+          - name: CO2 controlled/uncontrolled
+            specific for: GC, GH #TODO a list?
+          - name: Average CO2 during the light and dark period (umol mol-1) #TODO
+      - name: "Average humidity (moisture)"
+        required: true
+        children:
+          - name: Average VPDair during the light period (kPa) or Average humidity during the light period (%)
+          - name: Average VPDair during the night (kPa) or Average humidity during the night (%)
+      - name: "Daily photon flux (light intensity)"
+        required: true
+        children:
+          - name: Average daily integrated PPFD measured at plant or canopy level (mol m-2 day-1)
+          - name: Average length of the light period (h)
+          - name: Light intensity (umol m-2 s-1) #TODO
+            specific for: GC
+          - name: Range in peak light intensity (umol m-2 s-1) #TODO
+            specific for: GC
+          - name: Fraction of outside light intercepted by growth facility components and surrounding structures
+            specific for: GH, OTC
+      - name: "Light quality"
+        children:
+          - name: Type of lamps used
+            specific for: GC, GH
+          - name: R/FR ratio (mol mol-1)
+      - name: Temperature (C)
+        required: true
+        children:
+          - name: Average day temperature
+          - name: Average night temperature
+          - name: Change over the course of experiment
+  - name: Rooting conditions
+    required: true
+    children:
+      - name: "Rooting medium: aeroponics / hydroponics (water-based, solid-media based) / soil type (sand, peat, clay, mixed, ...)"
+        required: true
+      - name: Container type
+        specific for: GH
+        required: GH
+      - name: Volume (L)
+        specific for: GH
+        required: GH
+      - name: Height #TODO: is for GH, but not required
+        specific for: GH
+      - name: Other dimensions
+        specific for: GH
+        required: GH
+      - name: Number of plants per container
+        specific for: GH
+        required: GH
+      - name: Plot size
+        specific for: EF
+        required: EF
+      - name: Sowing density
+        specific for: EF
+        required: EF
+      - name: pH
+        required: true
+      - name: Frequency and volume of replenishment or addition
+      - name: "Soil parameters"
+        children:
+          - name: Soil penetration strength (Pa m-2)
+          - name: Water retention capacity (g g-1 dry weight)
+          - name: Organic matter content (%)
+          - name: Porosity (%)
+      - name: Rooting medium temperature
+  - name: "Nutrients"
+    children:
+      - name: Composition
+        specific for: hydroponics
+        required: hydroponics
+      - name: Concentration
+        specific for: hydroponics
+      - name: Extractable N content per unit ground area before fertiliser added
+        specific for: soil
+        required: soil
+      - name: Type and amount of fertiliser added per container or m2
+        specific for: soil
+        required: soil
+      - name: Concentration of P and other nutrients before start of the experiment
+        specific for: soil
+      - name: Extractable N content per unit ground area at the end of the experiment
+        specific for: soil
+  - name: "Watering"
+    children:
+      - name: "Irrigation type: irrigation from top/bottom/drip irrigation"
+        required: true
+      - name: Volume (L) and frequency of water added per container or m2
+        required: true
+      - name: Range in water potential (MPa)
+        specific for: soil
+  - name: "Salinity"
+    children:
+      - name: Concentration of Na, Cl and Mg in the water used for irrigation
+      - name: Electrical conductivity (dS m-1)
+        specific for: soil, hydroponics
+  - name: "Aquatic environment"
+    children:
+      - name: Water temperature
+      - name: Tidal phase
+      - name: Depth
+        specific for: sample submerged and emerged
+      - name: Time
+        specific for: sample submerged and emerged
+  - name: "Biotic environment"
+    children:
+      - name: Interacting organism (pathogens, mutualists, herbivores, endophytes, etc.)
+Source list:
+  - name: Poorter et al.
+    desc:
+    ref: 4
+  - name: Hanneman et al.
+    desc:
+    ref: 15
+Recommended ontologies:
+  - name: XEML Environment Ontology
+    abbr: XEO
+    ref: 16
+  - name: Ontology of environmental features and habitats
+    abbr: ENVO
+    ref: 17
+  - name: Crop Research Ontology
+    abbr: CRO
+    ref: 3
+---
+Checklist section: "Treatments"
+Attributes:
+  - name: Seasonal environment
+  - name: Air temperature regime
+  - name: Soil temperature regime
+  - name: Antibiotic regime
+  - name: Chemical administration
+  - name: Disease status
+  - name: Fertilizer regime
+  - name: Fungicide regime
+  - name: Gaseous regime
+  - name: Gravity
+  - name: Growth hormone regime
+  - name: Herbicide regime
+  - name: Mechanical treatment
+  - name: Mineral nutrient regime
+  - name: Humidity regime
+  - name: Non-mineral nutrient regime
+  - name: Radiation (light, UV-B, X-ray) regime
+  - name: Rainfall regime
+  - name: Salt regime
+  - name: Watering regime
+  - name: Water temperature regime
+  - name: Standing water regime
+  - name: Pesticide regime
+  - name: pH regime
+  - name: Other perturbation
+Source list:
+  - name: MIxS Plant-associated environmetal package
+    desc:
+    ref: 10
+  - name: Yilmaz et al.
+    desc:
+    ref: 11
+Recommended ontologies:
+  - name: XEML Environment Ontology
+    abbr: XEO
+    ref: 16
+  - name: Crop Research Ontology
+    abbr: CRO
+    ref: 3
+---
+Checklist section: "Experimental design"
+Attributes:
+  - name: Seasonal environment
+  - name: Air temperature regime
+
+
+Source list:
+  - name: MIxS Plant-associated environmetal package
+    desc:
+    ref: 10
+  - name: Yilmaz et al.
+    desc:
+    ref: 11
+Recommended ontologies:
+  - name: XEML Environment Ontology
+    abbr: XEO
+    ref: 16
+  - name: Crop Research Ontology
+    abbr: CRO
+    ref: 3

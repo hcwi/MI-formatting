@@ -1,0 +1,35 @@
+[
+  {
+    "Checklist section": "General metadata",
+    "Attributes": [
+      {
+        "name": "Unique identifier",
+        "required": true
+      },
+      {
+        "name": "Title",
+        "required": true
+      },
+      {
+        "name": "Description",
+        "required": true
+      }
+    ],
+    "Comment": "This is a comment"
+  },
+  {
+    "Checklist section": "General metadata",
+    "Attributes": {
+      "Unique identifier": {
+        "required": true
+      },
+      "Title": {
+        "required": true
+      },
+      "Description": {
+        "required": true
+      }
+    },
+    "Comment": "This is a comment"
+  }
+]
