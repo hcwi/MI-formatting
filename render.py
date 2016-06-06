@@ -27,7 +27,7 @@ def render_sl(sl):
 
 def render_ont(ont):
     if ont.get("abbr", False):
-        abbr = ",{}".format(ont["abbr"])
+        abbr = ", {}".format(ont["abbr"])
     else:
         abbr = ""
     return """<a href="{}">{}{}</a>""".format(ont["ref"], ont["name"], abbr)
@@ -36,20 +36,20 @@ def render_html(doc):
     buffer = StringIO()
     buffer.write("<tr>\n")
 
-    buffer.write("<td>{}</td>\n".format(doc["Checklist section"]))
+    buffer.write("<td>{}</td>\n".format(doc["checklist section"]))
 
     buffer.write("<td><ul>\n")
-    for attr in doc["Attributes"]:
+    for attr in doc["attributes"]:
         buffer.write("<li>{}</li>\n".format(render_attr(attr)))
     buffer.write("</ul></td>")
 
     buffer.write("<td><ul>")
-    for sl in doc["Source list"]:
+    for sl in doc["source list"]:
         buffer.write("<li>{0}</li>\n".format(render_sl(sl)))
     buffer.write("</ul></td>\n")
 
     buffer.write("<td><ul>")
-    for ont in doc["Recommended ontologies"]:
+    for ont in doc["recommended ontologies"]:
         buffer.write("<li>{0}</li>\n".format(render_ont(ont)))
     buffer.write("</ul></td>\n")
 
@@ -60,9 +60,15 @@ def render_html(doc):
 
 def main(filename):
     with open(filename, "r") as f:
-        docs = yaml.load_all(f)
-        print "<table>"
-        for doc in docs:
+        docs = yaml.load(f)
+        print "<table style='border-collapse:collapse;'>"
+        print "<tr>" \
+              "<th>Section</th>" \
+              "<th>Attributes</th>" \
+              "<th>Source list</th>" \
+              "<th>Recommended ontologies</th>" \
+              "</tr>"
+        for doc in docs["sections"]:
             print render_html(doc)
         print "</table>"
 
