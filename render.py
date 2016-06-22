@@ -10,7 +10,11 @@ def render_attr(attr):
         req = "*"
     else:
         req = ""
-    buffer.write("{}{}".format(attr["name"], req))
+    if attr.get("specific for", False):
+       buffer.write("<span title=\"Specific for {}\">{}{}</span>".format(
+               attr["specific for"], attr["name"], req))
+    else:
+        buffer.write("{}{}".format(attr["name"], req))
     children = attr.get("children", [])
     if children:
         buffer.write("\n<ul>\n")

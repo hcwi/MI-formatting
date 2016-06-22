@@ -38,7 +38,7 @@ sections:
             required: true
           - name: Duration (years/months/days/hours)
             requried: true
-      - name: "Experiment location"
+      - name: "Experiment location" #TODO: specific for fields and other open locations?
         children:
           - name: Geographic location
             required: true
@@ -325,9 +325,6 @@ sections:
         ref: "http://msi-workgroups.sourceforge.net/bio-metadata/reporting/pbc/doc.rtf"
       - name: Fiehn et al.
         desc: "Fiehn O, et al. Minimum reporting standards for plant biology context information in metabolomic studies. Metabolomics 2007; 3:195-201."
-        ref:
-      - name: List exist for assays in CIMR, MIAPE, MIMARKS (ISA-Tab configurations) + new attributes for phenotypic assays
-        desc:
         ref:
     recommended ontologies:
       - name:
