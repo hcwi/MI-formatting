@@ -63,18 +63,18 @@ def render_html(doc):
 
 
 def main(filename):
-    with open(filename, "r") as f:
-        docs = yaml.load(f)
-        print "<table style='border-collapse:collapse;'>"
-        print "<tr>" \
-              "<th>Section</th>" \
-              "<th>Attributes</th>" \
-              "<th>Source list</th>" \
-              "<th>Recommended ontologies</th>" \
-              "</tr>"
-        for doc in docs["sections"]:
-            print render_html(doc)
-        print "</table>"
+    f = open(filename, "r"):
+    docs = yaml.load(f)
+    print "<table style='border-collapse:collapse;'>"
+    print "<tr>" \
+          "<th>Section</th>" \
+          "<th>Attributes</th>" \
+          "<th>Source list</th>" \
+          "<th>Recommended ontologies</th>" \
+          "</tr>"
+    for doc in docs["sections"]:
+        print render_html(doc)
+    print "</table>"
 
 if __name__=='__main__':
     main(sys.argv[1])
