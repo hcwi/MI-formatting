@@ -10,7 +10,16 @@ def render_attr(attr):
         req = "*"
     else:
         req = ""
-    buffer.write("{}{}".format(attr["name"], req))
+    if attr.get("specific for", False):
+        if isinstance(attr.get("specific for"), list):
+            spec = ', '.join(attr.get("specific for"))
+        else:
+            spec = attr.get("specific for")
+        spec = " specific for " + spec
+    else:
+        spec = ""
+    buffer.write("{}{} <i><small>{}</small></i>".format(attr["name"], req, spec))
+
     children = attr.get("children", [])
     if children:
         buffer.write("\n<ul>\n")
@@ -34,11 +43,11 @@ def render_ont(ont):
 
 def render_html(doc):
     buffer = StringIO()
-    buffer.write("<tr>\n")
+    buffer.write("<tr style='border-bottom: 1px solid #ddd;'>\n")
 
     buffer.write("<td>{}</td>\n".format(doc["section name"]))
 
-    buffer.write("<td><ul>\n")
+    buffer.write("<td style='padding-top: 15px'><ul>\n")
     for attr in doc["attributes"]:
         buffer.write("<li>{}</li>\n".format(render_attr(attr)))
     buffer.write("</ul></td>")
@@ -61,7 +70,7 @@ def render_html(doc):
 def main(filename):
     with open(filename, "r") as f:
         docs = yaml.load(f)
-        print "<table style='border-collapse:collapse;'>"
+        print "<table style='border-collapse:collapse'>"
         print "<tr>" \
               "<th>Section</th>" \
               "<th>Attributes</th>" \

@@ -28,7 +28,7 @@ sections:
           - "PhenoHarmonIS: Which contacts? PI, experimentator, data manager?"
     source list:
       - name: ISA reporting guideline
-        desc: ISA reporting guideline
+        description: ISA reporting guideline
         ref: "http://www.biosharing.org/bsg-000078"
     recommended ontologies:
       - &obi
@@ -69,13 +69,13 @@ sections:
     source list:
       - &poorter
         name: Poorter et al.
-        desc: "Poorter H, Fiorani F, Stitt M, et al. The art of growing plants for experimental purposes: a practical guide for the plant biologist. Funct Plant Biol 2012. 39:821–38."
+        description: "Poorter H, Fiorani F, Stitt M, et al. The art of growing plants for experimental purposes: a practical guide for the plant biologist. Funct Plant Biol 2012. 39:821–38."
         ref:
       - name: Morrison et al.
-        desc: "Morrison N, et al. Standard reporting requirements for biological samples in metabolomics experiments: environmental context. Metabolomics 2007; 3:203."
+        description: "Morrison N, et al. Standard reporting requirements for biological samples in metabolomics experiments: environmental context. Metabolomics 2007; 3:203."
         ref:
       - name: CIMR, Environmental Analysis Context
-        desc:
+        description:
         ref: "http://msi-workgroups.sourceforge.net/bio-metadata/reporting/env/reporting-requirements/ECWSG_reporting_requirements_v1.rtf"
     recommended ontologies:
       - *obi
@@ -109,13 +109,13 @@ sections:
     source list:
       - &mixs
         name: MIxS Plant-associated environmetal package
-        desc: Minimum Information about any (x) Sequence, reporting guideline.
+        description: Minimum Information about any (x) Sequence, reporting guideline.
         ref: "http://www.biosharing.org/bsg-000518"
       - name: Yilmaz et al.
-        desc: "Yilmaz P, et al. The genomic standards consortium: bringing standards to life for microbial ecology. ISME Journal 2011; 5:1565-1567."
+        description: "Yilmaz P, et al. The genomic standards consortium: bringing standards to life for microbial ecology. ISME Journal 2011; 5:1565-1567."
         ref:
       - name: FAO/Bioversity Multi-Crop Passport Descriptors
-        desc: FAO/Bioversity Multi-Crop Passport Descriptors V.2 (MCPD V.2)
+        description: FAO/Bioversity Multi-Crop Passport Descriptors V.2 (MCPD V.2)
         ref: "http://www.bioversityinternational.org/e-library/publications/detail/faobioversity-multi-crop-passport-descriptors-v2-mcpd-v2"
     recommended ontologies:
       - name: UNIPROT Taxonomy
@@ -148,8 +148,8 @@ sections:
                 values:
                   - CO2 controlled
                   - CO2 uncontrolled
-                specific for: GC, GH #TODO a list?
-              - name: Average CO2 during the light and dark period (umol mol-1) #TODO
+                specific for: [GC, GH]
+              - name: Average CO2 during the light and dark period (umol mol-1)
                 unit: umol mol-1
           - name: "Average humidity (moisture)"
             required: true
@@ -162,19 +162,21 @@ sections:
             required: true
             children:
               - name: Average daily integrated PPFD measured at plant or canopy level (mol m-2 day-1)
+                unit: mol m-2 day-1
               - name: Average length of the light period (h)
-              - name: Light intensity (umol m-2 s-1) #TODO
+                unit: h
+              - name: Light intensity (umol m-2 s-1)
                 unit: umol m-2 s-1
                 specific for: GC
               - name: Range in peak light intensity (umol m-2 s-1) #TODO
                 unit: umol m-2 s-1
                 specific for: GC
               - name: Fraction of outside light intercepted by growth facility components and surrounding structures
-                specific for: GH, OTC
+                specific for: [GH, OTC]
           - name: "Light quality"
             children:
               - name: Type of lamps used
-                specific for: GC, GH
+                specific for: [GC, GH]
               - name: R/FR ratio (mol mol-1)
                 unit: mol mol-1
           - name: Temperature (C)
@@ -197,25 +199,25 @@ sections:
               - "PhenoHarmonIS: Free text description for soil, e.g. John Innes no.2 potting on compost"
           - name: Container type
             specific for: GH
-            required: GH #TODO true
+            required: true
           - name: Volume (l)
             unit: l
             specific for: GH
             required: GH
-          - name: Height #TODO: is for GH, but not required
+          - name: Height
             specific for: GH
           - name: Other dimensions
             specific for: GH
-            required: GH
+            required: true
           - name: Number of plants per container
             specific for: GH
-            required: GH
+            required: true
           - name: Plot size
             specific for: EF
-            required: EF
+            required: true
           - name: Sowing density
             specific for: EF
-            required: EF
+            required: true
           - name: pH
             required: true
           - name: Frequency and volume of replenishment or addition
@@ -233,16 +235,16 @@ sections:
       - name: "Nutrients"
         children:
           - name: Composition
-            specific for: hydroponics #TODO
-            required: hydroponics #TODO
+            specific for: hydroponics
+            required: true
           - name: Concentration
             specific for: hydroponics
           - name: Extractable N content per unit ground area before fertiliser added
             specific for: soil
-            required: soil
+            required: true
           - name: Type and amount of fertiliser added per container or m2
             specific for: soil
-            required: soil
+            required: true
           - name: Concentration of P and other nutrients before start of the experiment
             specific for: soil
           - name: Extractable N content per unit ground area at the end of the experiment
@@ -266,7 +268,7 @@ sections:
           - name: Concentration of Na, Cl and Mg in the water used for irrigation
           - name: Electrical conductivity (dS m-1)
             unit: dS m-1
-            specific for: soil, hydroponics
+            specific for: [soil, hydroponics]
       - name: "Aquatic environment"
         children:
           - name: Water temperature
@@ -282,7 +284,7 @@ sections:
       - *poorter
       - &hanneman
         name: Hanneman et al.
-        desc: "Hannemann J, Poorter H, Usadel B, et al. Xeml Lab: a software suite for a standardised description of the growth environment of plants. Plant Cell Environ 2009. 32:1185–200."
+        description: "Hannemann J, Poorter H, Usadel B, et al. Xeml Lab: a software suite for a standardised description of the growth environment of plants. Plant Cell Environ 2009. 32:1185–200."
         ref:
     recommended ontologies:
       - &xeo
@@ -316,6 +318,10 @@ sections:
       - name: Humidity regime
       - name: Non-mineral nutrient regime
       - name: Radiation (light, UV-B, X-ray) regime
+        children:
+          - name: light regime
+          - name: UV-B regime
+          - name: X-ray regime
       - name: Rainfall regime
       - name: Salt regime
       - name: Watering regime
@@ -327,7 +333,7 @@ sections:
     source list:
       - *mixs
       - name: Yilmaz et al.
-        desc: "Yilmaz P, et al. The genomic standards consortium: bringing standards to life for microbial ecology. ISME Journal 2011; 5:1565-1567."
+        description: "Yilmaz P, et al. The genomic standards consortium: bringing standards to life for microbial ecology. ISME Journal 2011; 5:1565-1567."
         ref:
     recommended ontologies:
       - *xeo
@@ -386,13 +392,13 @@ sections:
       - name: Sampling time
     source list:
       - name: "CIMR: Plant Biology Context"
-        desc:
+        description:
         ref: "http://msi-workgroups.sourceforge.net/bio-metadata/reporting/pbc/doc.rtf"
       - name: Fiehn et al.
-        desc: "Fiehn O, et al. Minimum reporting standards for plant biology context information in metabolomic studies. Metabolomics 2007; 3:195-201."
+        description: "Fiehn O, et al. Minimum reporting standards for plant biology context information in metabolomic studies. Metabolomics 2007; 3:195-201."
         ref:
       - name: List exist for assays in CIMR, MIAPE, MIMARKS (ISA-Tab configurations) + new attributes for phenotypic assays
-        desc:
+        description:
         ref:
     recommended ontologies:
       - name:
@@ -426,10 +432,10 @@ sections:
       - name: Data processing protocols
     source list:
       - name: "Trait/Method/Scale triplet approach applied by Generation Challenge Program, Crop Ontology"
-        desc: Crop Ontology Platform
+        description: Crop Ontology Platform
         ref: "http://www.cropontology.org"
       - name: Shrestha et al.
-        desc: "Shrestha R, et al. Bridging the phenotypic and genetic data useful for integrated breeding through a data annotation using the CropOntology developed by the crop communities of practice. Front Physiol 2012; 3: 326."
+        description: "Shrestha R, et al. Bridging the phenotypic and genetic data useful for integrated breeding through a data annotation using the CropOntology developed by the crop communities of practice. Front Physiol 2012; 3: 326."
         ref:
       - *poorter
       - *hanneman
