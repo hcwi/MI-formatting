@@ -1,8 +1,9 @@
 ---
 name: Minimum Information About a Plant Phenotyping Experiment
 abbr: MIAPPE
+description: a checklist for description of plant phenotyping experiments
 sections:
-  - checklist section: "General metadata"
+  - section name: "General metadata"
     attributes:
       - name: Unique identifier
         required: true
@@ -38,10 +39,10 @@ sections:
         name: Crop Research Ontology
         abbr: CRO
         ref: "http://cropontology.org/ontology/CO_715/Crop%20Research"
-    comments: >
-      This is a comment to the whole section
+    comments:
+      - "General metadata section groups the attributes that allow to identify the research, its authors and other formal information"
 
-  - checklist section: "Timing and location"
+  - section name: "Timing and location"
     attributes:
       - name: "Timing"
         children:
@@ -53,7 +54,7 @@ sections:
               - "PhenoHarmonIS: Duration isn't a useful term (annual duration only) - end date might be more searchable"
         comments:
           - "PhenoHarmonIS: Implement constraints on date format."
-      - name: "Experiment location" #TODO: specific for fields and other open locations?
+      - name: "Experiment location"
         children:
           - name: Geographic location
             required: true
@@ -81,10 +82,10 @@ sections:
       - name: Gazetteer
         abbr: GAZ
         ref: "http://purl.bioontology.org/ontology/GAZ"
-    comments: >
-      - This is a comment to the whole
+    comments:
+      - "The time and location granularity is specific to different kinds of experiments"
 
-  - checklist section: "Biosource"
+  - section name: "Biosource"
     attributes:
       - name: Organism (taxon)
         required: true
@@ -99,7 +100,7 @@ sections:
           - "PhenoHarmonIS: What is meant by genotype here? (germplasm identifier)?"
       - name: Organism age
       - name: Life stage
-      - name: "Seed preparation"
+      - name: Seed preparation
         children:
           - name: Seed source
             required: true
@@ -126,7 +127,7 @@ sections:
     comments:
       - "PhenoHarmonIS: Use MCPD fields to handle this (use terminology and cover categories)"
 
-  - checklist section: "Environment"
+  - section name: "Environment"
     attributes:
       - name: Growth facility (growth chamber, GC / greenhouse, GH / open top chamber, OTC / experimental garden, EG / experimental field, EF)
         values:
@@ -149,19 +150,24 @@ sections:
                   - CO2 uncontrolled
                 specific for: GC, GH #TODO a list?
               - name: Average CO2 during the light and dark period (umol mol-1) #TODO
+                unit: umol mol-1
           - name: "Average humidity (moisture)"
             required: true
             children:
               - name: Average VPDair during the light period (kPa) or Average humidity during the light period (%)
+                unit: "%"
               - name: Average VPDair during the night (kPa) or Average humidity during the night (%)
+                unit: "%"
           - name: "Daily photon flux (light intensity)"
             required: true
             children:
               - name: Average daily integrated PPFD measured at plant or canopy level (mol m-2 day-1)
               - name: Average length of the light period (h)
               - name: Light intensity (umol m-2 s-1) #TODO
+                unit: umol m-2 s-1
                 specific for: GC
               - name: Range in peak light intensity (umol m-2 s-1) #TODO
+                unit: umol m-2 s-1
                 specific for: GC
               - name: Fraction of outside light intercepted by growth facility components and surrounding structures
                 specific for: GH, OTC
@@ -170,7 +176,9 @@ sections:
               - name: Type of lamps used
                 specific for: GC, GH
               - name: R/FR ratio (mol mol-1)
+                unit: mol mol-1
           - name: Temperature (C)
+            unit: C
             required: true
             children:
               - name: Average day temperature
@@ -189,8 +197,9 @@ sections:
               - "PhenoHarmonIS: Free text description for soil, e.g. John Innes no.2 potting on compost"
           - name: Container type
             specific for: GH
-            required: GH
-          - name: Volume (L)
+            required: GH #TODO true
+          - name: Volume (l)
+            unit: l
             specific for: GH
             required: GH
           - name: Height #TODO: is for GH, but not required
@@ -213,15 +222,19 @@ sections:
           - name: "Soil parameters"
             children:
               - name: Soil penetration strength (Pa m-2)
+                unit: Pa m-2
               - name: Water retention capacity (g g-1 dry weight)
+                unit: g g-1
               - name: Organic matter content (%)
+                unit: "%"
               - name: Porosity (%)
+                unit: "%"
           - name: Rooting medium temperature
       - name: "Nutrients"
         children:
           - name: Composition
-            specific for: hydroponics
-            required: hydroponics
+            specific for: hydroponics #TODO
+            required: hydroponics #TODO
           - name: Concentration
             specific for: hydroponics
           - name: Extractable N content per unit ground area before fertiliser added
@@ -243,14 +256,16 @@ sections:
               - bottom irrigation
               - automated irrigation
             required: true
-          - name: Volume (L) and frequency of water added per container or m2
+          - name: Volume (L) and frequency of water added per container or m2 #TODO divide in two attributes?
             required: true
           - name: Range in water potential (MPa)
+            unit: MPa
             specific for: soil
       - name: "Salinity"
         children:
           - name: Concentration of Na, Cl and Mg in the water used for irrigation
           - name: Electrical conductivity (dS m-1)
+            unit: dS m-1
             specific for: soil, hydroponics
       - name: "Aquatic environment"
         children:
@@ -282,7 +297,7 @@ sections:
       - "PhenoHarmonIS: Some fields appear to be compulsory when it’s not clear that they will be relevant to every experiment e.g. temperature, pH, irrigation type, other dimensions."
       - "PhenoHarmonIS: Is it possible to retrieve environmental/climate data from public online sources and put them in the dataset?"
 
-  - checklist section: "Treatments"
+  - section name: "Treatments"
     attributes:
       - name: Seasonal environment
       - name: Air temperature regime
@@ -318,7 +333,7 @@ sections:
       - *xeo
       - *cro
 
-  - checklist section: "Experimental design"
+  - section name: "Experimental design"
     attributes:
       - name: "Spatial coordinates"
         children:
@@ -356,7 +371,7 @@ sections:
         ref: "http://bioportal.bioontology.org/ontologies/STATO"
       - *cro
 
-  - checklist section: "Sample collection, processing, management"
+  - section name: "Sample collection, processing, management"
     attributes:
       - name: Plant body of interest (organ)
         required: true
@@ -381,9 +396,9 @@ sections:
         abbr:
         ref:
     comments:
-      - "phenoHarmonIS: What happens if one carries out several measurements on several different parts of a plant at different time points?"
+      - "PhenoHarmonIS: What happens if one carries out several measurements on several different parts of a plant at different time points?"
 
-  - checklist section: "Observed variables"
+  - section name: "Observed variables"
     attributes:
       - name: "Phenotypic variables"
         children:
@@ -401,6 +416,10 @@ sections:
             required: true
           - name: Scale
             required: true
+        comments:
+          - >
+            Observed values of environmental variables, e.g. temperature, moisture, etc. Especially important to note if
+            different than experimental settings provided as paramenters of environmental protocols.
       - name: Data processing protocols
     source list:
       - name: "Trait/Method/Scale triplet approach applied by Generation Challenge Program, Crop Ontology"

@@ -40,7 +40,7 @@ def render_html(doc):
     buffer = StringIO()
     buffer.write("<tr>\n")
 
-    buffer.write("<td>{}</td>\n".format(doc["checklist section"]))
+    buffer.write("<td>{}</td>\n".format(doc["section name"]))
 
     buffer.write("<td><ul>\n")
     for attr in doc["attributes"]:
