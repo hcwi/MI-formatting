@@ -10,11 +10,7 @@ def render_attr(attr):
         req = "*"
     else:
         req = ""
-    if attr.get("specific for", False):
-       buffer.write("<span title=\"Specific for {}\">{}{}</span>".format(
-               attr["specific for"], attr["name"], req))
-    else:
-        buffer.write("{}{}".format(attr["name"], req))
+    buffer.write("{}{}".format(attr["name"], req))
     children = attr.get("children", [])
     if children:
         buffer.write("\n<ul>\n")
@@ -63,18 +59,18 @@ def render_html(doc):
 
 
 def main(filename):
-    f = open(filename, "r"):
-    docs = yaml.load(f)
-    print "<table style='border-collapse:collapse;'>"
-    print "<tr>" \
-          "<th>Section</th>" \
-          "<th>Attributes</th>" \
-          "<th>Source list</th>" \
-          "<th>Recommended ontologies</th>" \
-          "</tr>"
-    for doc in docs["sections"]:
-        print render_html(doc)
-    print "</table>"
+    with open(filename, "r") as f:
+        docs = yaml.load(f)
+        print "<table style='border-collapse:collapse;'>"
+        print "<tr>" \
+              "<th>Section</th>" \
+              "<th>Attributes</th>" \
+              "<th>Source list</th>" \
+              "<th>Recommended ontologies</th>" \
+              "</tr>"
+        for doc in docs["sections"]:
+            print render_html(doc)
+        print "</table>"
 
 if __name__=='__main__':
     main(sys.argv[1])

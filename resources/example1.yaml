@@ -391,6 +391,9 @@ sections:
       - name: Fiehn et al.
         desc: "Fiehn O, et al. Minimum reporting standards for plant biology context information in metabolomic studies. Metabolomics 2007; 3:195-201."
         ref:
+      - name: List exist for assays in CIMR, MIAPE, MIMARKS (ISA-Tab configurations) + new attributes for phenotypic assays
+        desc:
+        ref:
     recommended ontologies:
       - name:
         abbr:
